@@ -6,7 +6,7 @@ const Event = require('./models/Event');
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 app.use(express.json());
 
 const allowedOrigins = [
@@ -25,7 +25,7 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
 
 app.get('/events', async (req, res) => {
     try {
