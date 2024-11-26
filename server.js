@@ -5,12 +5,19 @@ const dotenv = require('dotenv');
 const Event = require('./models/Event');
 
 dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-app.use(cors());
 app.use(express.json());
+
+const allowedOrigins = [
+  'https://aroundu-kohl.vercel.app/',
+  'http://localhost:3000',
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 // MongoDB connection
 mongoose
